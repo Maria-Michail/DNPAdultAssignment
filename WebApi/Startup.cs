@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WebApi.Data;
+using WebApi.Persistence;
 
 namespace WebApi
 {
@@ -27,7 +28,9 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<IGetFamilies, GetFamilies>();
+             services.AddDbContext<AdultContext>();
+            services.AddScoped<IGetFamilies, SqLiteGetFamilies>();
+            services.AddScoped<IUserService, InMemoryUserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

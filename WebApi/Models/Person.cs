@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace WebApi.Models {
 public class Person {
-    [JsonPropertyName("Id")]
+    [JsonPropertyName("Id"),Key]
     public int Id { get; set; }
     [NotNull]
     [JsonPropertyName("FirstName")]
